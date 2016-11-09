@@ -1,15 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "produto.h"
 
-struct Localizacao {
-	int corredor;
-	int prateleira;
-};
-
-struct Produto {
-	enum { LIMPEZA, PERECIVEL, N_PERECIVEL, ELETRONICO } categoria;
-	int codigo;
-	double preco;
-	char[255] descricao;
-	char[65] fornecedor;
-	
-};
+int newProduct(Produto *p) {
+	printf("%d\n", (*p).codigo);
+}
