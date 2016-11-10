@@ -13,6 +13,7 @@ struct Data {
 };
 
 typedef struct Produto {
+	int id;
 	enum { LIMPEZA, PERECIVEL, N_PERECIVEL, ELETRONICO } categoria;
 	int codigo;
 	double preco;
