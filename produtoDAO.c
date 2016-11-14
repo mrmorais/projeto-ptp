@@ -2,13 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include "produto.h"
-#define PATH "./data/produto.txt"
-#define MAX_LIN 26 //Máxima quantidade de linhas no arquivo
-#define MAX_COL 255 //Máxima quantidade de colunas por linha
+#include "produtoDAO.h"
 
-void readFile(char tupla[MAX_LIN][MAX_COL]) {
+/*
+ * Project: Bodega do IMD. Grupo 13
+ * File: produtoDAO.c
+ * Programmer: Maradona Morais (mrmorais@gthb)
+ * Commit Log: ProdutoDAO function 14/11/2016
+ * Issues: NO
+ */
+
+void dao_readFile(char tupla[MAX_LIN][MAX_COL]) {
+  /* Isto é mágica. Não toque aqui. */
   FILE *arquivo;
-  arquivo = fopen(PATH, "r");
+  arquivo = fopen(PRODUTO_TXT, "r");
   char ch;
   int lin = 0, col = 0;
   while((ch=fgetc(arquivo)) != EOF) {
@@ -21,7 +28,7 @@ void readFile(char tupla[MAX_LIN][MAX_COL]) {
   fclose(arquivo);
 }
 
-void setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]) {
+void dao_setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]) {
   int i, j;
   for(i=0; i < MAX_LIN; i++) {
     Produto p;
@@ -64,13 +71,15 @@ void setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]) {
           case 10: //Prateleira
             p.localizacao.prateleira = atoi(info);
             break;
+          case 11: //Quantidade
+            p.quantidade = atoi(info);
+            break;
         }
         //reset info - rever como fazer isso usando o strcpy
         int l;
         for (l=0; l<65; l++) {
           info[l] = 0;
         }
-        printf("\n%s\n", info);
         posicao++;
       } else {
         info[k++] = tupla[i][j];
@@ -79,10 +88,77 @@ void setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]) {
   }
 }
 
-int main() {
-  char tupla[MAX_LIN][MAX_COL];
-  readFile(tupla);
+int dao_putProduto(Produto *p) {
+  FILE *arquivo;
+  arquivo = fopen(PRODUTO_TXT, "a+");
+  (*p).id = dao_getNextId();
+  fprintf(arquivo, "%i:%i:%i:%.2f:%s:%s:%i:%i:%i:%i:%i:%i:\n",
+          (*p).id,
+          (*p).categoria,
+          (*p).codigo,
+          (*p).preco,
+          (*p).descricao,
+          (*p).fornecedor,
+          (*p).validade.dia,
+          (*p).validade.mes,
+          (*p).validade.ano,
+          (*p).localizacao.corredor,
+          (*p).localizacao.prateleira,
+          (*p).quantidade);
 
-  Produto produto[MAX_LIN];
-  setProdutos(tupla, produto);
+  fclose(arquivo);
+  return (*p).id;
 }
+
+int dao_getNextId() {
+  FILE *arquivo;
+  arquivo = fopen(ID_COUNT_TXT, "r");
+  char last_id_str[11];
+  int i = 0, last_id = 0;
+  char ch;
+  while((ch=fgetc(arquivo)) != EOF) {
+    last_id_str[i] = ch;
+    i++;
+  }
+  last_id = atoi(last_id_str);
+
+  fclose(arquivo);
+  arquivo = fopen(ID_COUNT_TXT, "w");
+
+  int next_id = last_id+1;
+
+  fprintf(arquivo, "%d\n", next_id);
+
+  fclose(arquivo);
+
+  return next_id;
+}
+
+//int main() {
+  // _______-----__---------------- Código que testa a leitura
+  // char tupla[MAX_LIN][MAX_COL];
+  // dao_readFile(tupla);
+  //
+  // Produto produto[MAX_LIN];
+  // dao_setProdutos(tupla, produto);
+  // -_---------------_------- Código que testa a escrita
+  // Produto p;
+  // p.id = dao_getNextId();
+  // p.categoria = LIMPEZA;
+  // p.codigo = 2121;
+  // p.preco = 21.45;
+  // char desc[25] = "dfdf";
+  // strcpy(p.descricao, desc);
+  // char forn[25] = "apple";
+  // strcpy(p.fornecedor, forn);
+  // p.validade.dia = 22;
+  // p.validade.mes = 06;
+  // p.validade.ano = 1997;
+  // p.localizacao.corredor = 22;
+  // p.localizacao.prateleira = 23;
+  // p.quantidade = 12;
+  //
+  // dao_putProduto(&p);
+  // _---_______--------____--___----__---- Código que pega o próximo id
+  // printf("%i\n", dao_getNextId());
+//}

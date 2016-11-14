@@ -30,7 +30,7 @@ int main()
 	my_items = (ITEM **)calloc(n_choices + 1, sizeof(ITEM *));
 
 	for(i = 0; i < n_choices; ++i)
-	        my_items[i] = new_item(choices[i], choices[i]);
+	        my_items[i] = new_item(choices[i], "");
 	my_items[n_choices] = (ITEM *)NULL;
 
 	my_menu = new_menu((ITEM **)my_items);

@@ -14,16 +14,17 @@ struct Data {
 
 typedef struct Produto {
 	int id;
-	enum { LIMPEZA, PERECIVEL, N_PERECIVEL, ELETRONICO } categoria;
+	enum { LIMPEZA=1, PERECIVEL, N_PERECIVEL, ELETRONICO } categoria;
 	int codigo;
 	double preco;
 	char descricao[255];
 	char fornecedor[255];
 	struct Data validade;
 	struct Localizacao localizacao;
+	int quantidade;
 } Produto;
 
-int newProduct(Produto *p);
+int produto_newProduct(Produto *p);
 Produto getProduct(int id);
 
 #endif

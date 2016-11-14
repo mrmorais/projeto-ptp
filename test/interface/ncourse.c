@@ -2,11 +2,13 @@
 #include "win_choose.h"
 
 int main(int argc, char *argv[])
-{	WINDOW *my_win;
+{
+  WINDOW *my_win;
 
 	int ch;
   system("resize -s 41 150");
 	initscr();			/* Start curses mode 		*/
+  curs_set(0);
   start_color();
   init_pair(1, COLOR_WHITE, COLOR_BLUE);
   init_pair(2, COLOR_BLUE, COLOR_WHITE);
