@@ -133,32 +133,3 @@ int dao_getNextId() {
 
   return next_id;
 }
-
-//int main() {
-  // _______-----__---------------- Código que testa a leitura
-  // char tupla[MAX_LIN][MAX_COL];
-  // dao_readFile(tupla);
-  //
-  // Produto produto[MAX_LIN];
-  // dao_setProdutos(tupla, produto);
-  // -_---------------_------- Código que testa a escrita
-  // Produto p;
-  // p.id = dao_getNextId();
-  // p.categoria = LIMPEZA;
-  // p.codigo = 2121;
-  // p.preco = 21.45;
-  // char desc[25] = "dfdf";
-  // strcpy(p.descricao, desc);
-  // char forn[25] = "apple";
-  // strcpy(p.fornecedor, forn);
-  // p.validade.dia = 22;
-  // p.validade.mes = 06;
-  // p.validade.ano = 1997;
-  // p.localizacao.corredor = 22;
-  // p.localizacao.prateleira = 23;
-  // p.quantidade = 12;
-  //
-  // dao_putProduto(&p);
-  // _---_______--------____--___----__---- Código que pega o próximo id
-  // printf("%i\n", dao_getNextId());
-//}

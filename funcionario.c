@@ -8,7 +8,7 @@
  * File: funcionario.c
  * Programmer: Maradona Morais (mrmorais@gthb)
  * Commit Log: Funcionario function 14/11/2016
- * Issues: NO
+ * Issues: #1 #2
  */
 
 void funcionario_menu() {
@@ -55,10 +55,10 @@ void funcionario_new_product() {
   printf("Código: ");
   scanf("%i", &p.codigo);
   printf("Descricão: ");
-  scanf("%s", p.descricao);
+  scanf("%s", p.descricao); //Issue #1
   setbuf(stdin, NULL);
   printf("Fornecedor: ");
-  scanf("%s", p.fornecedor);
+  scanf("%s", p.fornecedor); //Issue #1
   setbuf(stdin, NULL);
   int tmp_category;
   char confirm;
@@ -102,10 +102,6 @@ void funcionario_new_product() {
   printf("Localização [prateleira]: ");
   scanf("%i", &p.localizacao.prateleira);
 
+  //Issue #2
   produto_newProduct(&p);
-  // printf("Confirmar cadastramento? [Y/n]: ");
-  // scanf("%c", &confirm);
-  // if(confirm != 'n') {
-  //   produto_newProduct(&p);
-  // }
 }

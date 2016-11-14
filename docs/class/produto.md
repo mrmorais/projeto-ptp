@@ -12,6 +12,7 @@
 |char[65]|fornecedor|nome do fornecedor|
 |struct Data|validade|data de validade do produto|
 |struct Localizacao|localizacao|localizaçao do produto|
+|int |quantidade|quantidade de produtos|
 
 
 #### struct Data
@@ -28,13 +29,8 @@
 |int|prateleira|
 
 ### Rotinas
+#### int produto_newProduct(Produto \*p);
+Recebe:
+* ponteiro **p** para um _Produto_
 
-int **newProduct**(Produto obj);
-
-Produto **getProduct**(int id);
-
-Produto[] **getProducts**(int order_type);
-
-Produto[] **searchProductByName()**;
-
-Produto[] **searchProductByProvider()**;
+Repassa para o **produtoDAO.c** a referência de um produto para que seja grava em **produto.txt**.
