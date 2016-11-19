@@ -16,3 +16,9 @@
 int produto_newProduct(Produto *p) {
 	dao_putProduto(p);
 }
+
+void produto_getAllProducts(Produto products[MAX_LIN]) {
+	char tupla[MAX_LIN][MAX_COL];
+	dao_readFile(tupla);
+	dao_setProdutos(tupla, products);
+}

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "produto.h"
+#include "produtoDAO.h"
 #include "funcionario.h"
 
 /*
@@ -12,8 +13,9 @@
  */
 
 void funcionario_menu() {
-  int ch;
-  while(1) {
+  int ch=1;
+
+  do {
     system("clear");
     printf("MENU DE FUNCIONÁRIO\n");
     printf("1 - Listar produtos\n");
@@ -23,34 +25,50 @@ void funcionario_menu() {
     printf("0 - Voltar\n\n");
     scanf("%d", &ch);
 
-    if(ch == 0) {
-      break;
-    }
-
     switch (ch) {
       case 1:
-        ch = 0;
-        system("clear");
-        printf("Listando os produtos...\n");
+        funcionario_list_products();
 
-        scanf("%i\n", &ch); //Retirar isso
         break;
       case 3:
-        ch = 0;
         funcionario_new_product();
-        //scanf("%i", &ch); //Retirar isso
         break;
     }
 
+  } while(ch);
 
-  }
+  // while(1) {
+  //   system("clear");
+  //   printf("MENU DE FUNCIONÁRIO\n");
+  //   printf("1 - Listar produtos\n");
+  //   printf("2 - Buscar produto\n");
+  //   printf("3 - Cadastrar novo produto\n");
+  //   printf("4 - Reposição de Estoque\n");
+  //   printf("0 - Voltar\n\n");
+  //   scanf("%d", &ch);
+  //
+  //   if(ch == 0) {
+  //     break;
+  //   }
+  //
+  //   if(ch == 1) {
+  //     printf("Listando os produtos...\n");
+  //     funcionario_list_products();
+  //     printf("dasd\n" );
+  //   }
+  //
+  //   if(ch == 3) {
+  //     funcionario_new_product();
+  //   }
+  //
+  // }
 
 
 }
 
 void funcionario_new_product() {
-  Produto p;
   system("clear");
+  Produto p;
   printf("CADASTRO DE NOVO PRODUTO\n");
   printf("Código: ");
   scanf("%i", &p.codigo);
@@ -104,4 +122,31 @@ void funcionario_new_product() {
 
   //Issue #2
   produto_newProduct(&p);
+}
+
+void funcionario_list_products() {
+  system("clear");
+
+  Produto products[MAX_LIN];
+  produto_getAllProducts(products);
+  int i;
+  printf("------------------------------------------------------------------\n");
+  for(i=0; i<MAX_LIN; i++) {
+    if(products[i].id != 0) {
+      printf("Código:  %i  ", products[i].codigo);
+      printf("Descricao:  %s  \n", products[i].descricao);
+      printf("Preço:  R$ %.2f ", products[i].preco);
+      printf("Fornecedor:  %s  ", products[i].fornecedor);
+      printf("Quantidade:  %i  \n", products[i].quantidade);
+      printf("Data de Validade:  %i/%i/%i  ", products[i].validade.dia, products[i].validade.mes, products[i].validade.ano);
+      printf("Corredor:  %i  ", products[i].localizacao.corredor);
+      printf("Prateleira:  %i \n", products[i].localizacao.prateleira);
+      printf("------------------------------------------------------------------\n");
+    }
+  }
+
+  printf("Voltar ao menu [PRESS 9]: "); //Err
+  char go;
+  scanf("%c\n", &go);
+
 }

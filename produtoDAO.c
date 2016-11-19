@@ -32,7 +32,6 @@ void dao_readFile(char tupla[MAX_LIN][MAX_COL]) {
 void dao_setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]) {
   int i, j;
   for(i=0; i < MAX_LIN; i++) {
-    Produto p;
     int posicao = 0, k = 0;
     char info[65] = "";
     for(j=0; j < strlen(tupla[i]); j++) {
@@ -40,43 +39,44 @@ void dao_setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]) {
         k = 0;
         switch (posicao) {
           case 0: //ID
-            p.id = atoi(info);
+            produto[i].id = atoi(info);
             break;
           case 1: //Categoria
-            p.categoria = atoi(info);
+            produto[i].categoria = atoi(info);
             break;
           case 2: //Código
-            p.codigo = atoi(info);
+            produto[i].codigo = atoi(info);
             break;
           case 3: //Preço
-            p.preco = atof(info);
+            produto[i].preco = atof(info);
             break;
           case 4: //Descricao
-            strcpy(p.descricao, info);
+            strcpy(produto[i].descricao, info);
             break;
           case 5: //Fornecedor
-            strcpy(p.fornecedor, info);
+            strcpy(produto[i].fornecedor, info);
             break;
           case 6: //Dia validade
-            p.validade.dia = atoi(info);
+            produto[i].validade.dia = atoi(info);
             break;
           case 7: //Mes validade
-            p.validade.mes = atoi(info);
+            produto[i].validade.mes = atoi(info);
             break;
           case 8: //Ano validade
-            p.validade.ano = atoi(info);
+            produto[i].validade.ano = atoi(info);
             break;
           case 9: //Corredor
-            p.localizacao.corredor = atoi(info);
+            produto[i].localizacao.corredor = atoi(info);
             break;
           case 10: //Prateleira
-            p.localizacao.prateleira = atoi(info);
+            produto[i].localizacao.prateleira = atoi(info);
             break;
           case 11: //Quantidade
-            p.quantidade = atoi(info);
+            produto[i].quantidade = atoi(info);
             break;
         }
-        //reset info - rever como fazer isso usando o strcpy
+
+        // info[0] = '\0';
         int l;
         for (l=0; l<65; l++) {
           info[l] = 0;

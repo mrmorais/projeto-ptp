@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	my_win = win_choose();
 
 	while((ch = getch()) != 27) {
-
+    
   }
 
 	endwin();			/* End curses mode		  */
