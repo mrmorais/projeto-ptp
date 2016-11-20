@@ -1,9 +1,7 @@
+#include "produtoDAO.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "produto.h"
-#include "produtoDAO.h"
-
 /*
  * Project: Bodega do IMD. Grupo 13
  * File: produtoDAO.c
@@ -34,19 +32,21 @@ void dao_writeFile(Produto products[MAX_LIN]) {
   arquivo = fopen(PRODUTO_TXT, "w");
   int i;
   for(i=0; i<MAX_LIN; i++) {
-    fprintf(arquivo, "%i:%i:%i:%.2f:%s:%s:%i:%i:%i:%i:%i:%i:\n",
-            products[i].id,
-            products[i].categoria,
-            products[i].codigo,
-            products[i].preco,
-            products[i].descricao,
-            products[i].fornecedor,
-            products[i].validade.dia,
-            products[i].validade.mes,
-            products[i].validade.ano,
-            products[i].localizacao.corredor,
-            products[i].localizacao.prateleira,
-            products[i].quantidade);
+    if(products[i].id != 0) {
+      fprintf(arquivo, "%i:%i:%i:%.2f:%s:%s:%i:%i:%i:%i:%i:%i:\n",
+              products[i].id,
+              products[i].categoria,
+              products[i].codigo,
+              products[i].preco,
+              products[i].descricao,
+              products[i].fornecedor,
+              products[i].validade.dia,
+              products[i].validade.mes,
+              products[i].validade.ano,
+              products[i].localizacao.corredor,
+              products[i].localizacao.prateleira,
+              products[i].quantidade);
+    }
   }
   fclose(arquivo);
 }
@@ -174,7 +174,7 @@ void dao_updateProduct(int id, Produto* p) {
 
 void dao_getProductById(int id, Produto *p) {
   (*p).id = 0;
-  
+
   Produto products[MAX_LIN];
   produto_getAllProducts(products);
 

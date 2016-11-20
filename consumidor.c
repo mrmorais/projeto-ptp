@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "consumidor.h"
 /*
  * Project: Bodega do IMD. Grupo 13
  * File: consumidor.c
@@ -9,33 +9,25 @@
  */
 
 void consumidor_menu() {
-  int ch;
-  while(1) {
+  int ch = 1;
+  do {
     system("clear");
     printf("MENU DE CONSUMIDOR\n");
     printf("1 - Listar produtos\n");
     printf("2 - Buscar produto\n");
-    printf("3 - Cadastrar novo produto\n");
-    printf("4 - Reposição de Estoque\n");
+    printf("3 - Ver carrinho\n");
+    printf("4 - Limpar carrinho\n");
+    printf("5 - Finalizar compra\n");
     printf("0 - Voltar\n\n");
     scanf("%d", &ch);
 
-    if(ch == 0) {
-      break;
-    }
-
     switch (ch) {
       case 1:
-        ch = 0;
-        system("clear");
-        printf("Listando os produtos...\n");
-
-        scanf("%i\n", &ch);
+        menu_list_products();
+        break;
+      case 2:
+        menu_search_products();
         break;
     }
-
-
-  }
-
-
+  } while(ch);
 }

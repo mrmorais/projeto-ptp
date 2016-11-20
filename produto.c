@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "produto.h"
 #include "produtoDAO.h"
+#include "produto.h"
 
 /*
  * Project: Bodega do IMD. Grupo 13

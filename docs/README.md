@@ -12,7 +12,7 @@ O projeto consiste em desenvolver um banco de dados de um mercado. Deve obedecer
     2. Entrada de produtos novos (pelo teclado ou por arquivo). 5% :white_check_mark:
     3. Reposição de estoque. 5% :white_check_mark:
     4. Opção de busca: filtro por preço, quantidade de estoque
-3. Criar um registro para armazenar informações de cada produto 5% :white_circle:
+3. Criar um registro para armazenar informações de cada produto 5% :white_check_mark:
   1. Campo categoria: Limpeza, alimento perecível, alimento não perecível, eletrônico.
   2. Código
   3. Preço
