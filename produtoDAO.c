@@ -32,7 +32,7 @@ void dao_writeFile(Produto products[MAX_LIN]) {
   arquivo = fopen(PRODUTO_TXT, "w");
   int i;
   for(i=0; i<MAX_LIN; i++) {
-    if(products[i].id != 0) {
+    if(products[i].id != 0 && products[i].id < dao_getNextId()) {
       fprintf(arquivo, "%i:%i:%i:%.2f:%s:%s:%i:%i:%i:%i:%i:%i:\n",
               products[i].id,
               products[i].categoria,

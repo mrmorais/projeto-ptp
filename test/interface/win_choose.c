@@ -2,17 +2,18 @@
 #include <menu.h>
 #include <stdlib.h>
 #include "window.h"
+#include "win_funcionario.h"
 
 char *choices[] = {
   "Funcionário",
   "Consumidor",
-  "Sobre"
+  "Sobre",
+  "Sair"
 };
 int n_choices = sizeof(choices) / sizeof(char *);
 void print_menu(WINDOW *menu, int highlight);
 
 WINDOW *win_choose() {
-
   WINDOW *lw = create_newwin();
   int x = 6; int y = 36;
   wmove(lw, x, y);
@@ -71,6 +72,23 @@ WINDOW *win_choose() {
       break;
     }
   }
+
+  WINDOW *win_func;
+  switch (choice) {
+    case 1:
+      win_func = win_funcionario();
+    break;
+    case 2:
+    break;
+    case 3:
+    break;
+    case 4:
+      endwin();
+      exit(0);
+    break;
+  }
+
+	refresh();
 
   return lw;
 }

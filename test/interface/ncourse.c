@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 
 	int ch;
   system("resize -s 41 150");
-	initscr();			/* Start curses mode 		*/
+	initscr();	/* Start curses mode 		*/
   curs_set(0);
   start_color();
   init_pair(1, COLOR_WHITE, COLOR_BLUE);
@@ -18,13 +18,12 @@ int main(int argc, char *argv[])
   noecho();
   keypad(stdscr, TRUE);		/* I need that nifty F1 	*/
 
-
-	printw("ESC para Sair");
   refresh();
 	my_win = win_choose();
 
-	while((ch = getch()) != 27) {
-    
+  char c;
+  while(c = wgetch(my_win)) {
+
   }
 
 	endwin();			/* End curses mode		  */
