@@ -1,7 +1,7 @@
 #ifndef _PRODUTODAO_H_
 #define _PRODUTODAO_H_
-#define PRODUTO_TXT "./data/produto.txt"
-#define ID_COUNT_TXT "./data/id_count.txt"
+#define PRODUTO_TXT "./class/data/produto.txt"
+#define ID_COUNT_TXT "./class/data/id_count.txt"
 #define MAX_LIN 26 //Máxima quantidade de linhas no arquivo
 #define MAX_COL 255 //Máxima quantidade de colunas por linha
 #include "produto.h"
