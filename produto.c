@@ -21,6 +21,12 @@ void produto_getAllProducts(Produto products[MAX_LIN]) {
 	char buffer[MAX_LIN][MAX_COL];
 	dao_readFile(buffer);
 	dao_setProdutos(buffer, products);
+	int i;
+	for (i=0; i<MAX_LIN; i++) {
+		if(products[i].id < dao_getNextId() && products[i].id > 0) {
+			products[i].id = 0;
+		}
+	}
 }
 
 void produto_getProductById(int id, Produto* p) {

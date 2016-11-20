@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <menu.h>
 #include <stdlib.h>
+#include <string.h>
 #include "window.h"
 #include "win_funcionario.h"
 
@@ -36,6 +37,10 @@ WINDOW *win_funcionario() {
   wmove(ps, 3, 2);
   whline(ps, '*', 106);
 
+  Produto p;
+  p.descricao = "Nome";
+
+  //print_produto(&ps, 6, &p);
 
   wrefresh(ps);
 
@@ -43,8 +48,4 @@ WINDOW *win_funcionario() {
 
   wrefresh(lw);
   return lw;
-}
-
-void print_produto(WINDOW* ps, int lin) {
-
 }
