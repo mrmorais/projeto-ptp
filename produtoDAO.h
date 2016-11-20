@@ -9,5 +9,7 @@ void dao_readFile(char tupla[MAX_LIN][MAX_COL]);
 void dao_setProdutos(char tupla[MAX_LIN][MAX_COL], Produto produto[MAX_LIN]);
 int dao_putProduto(Produto *p);
 int dao_getNextId();
+void dao_updateProduct(int id, Produto* p);
+void dao_getProductById(int id, Produto* p);
 
 #endif

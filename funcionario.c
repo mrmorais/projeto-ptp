@@ -28,41 +28,19 @@ void funcionario_menu() {
     switch (ch) {
       case 1:
         funcionario_list_products();
-
+        break;
+      case 2:
+        funcionario_search_product();
         break;
       case 3:
         funcionario_new_product();
         break;
+      case 4:
+        funcionario_stock_replace();
+        break;
     }
 
   } while(ch);
-
-  // while(1) {
-  //   system("clear");
-  //   printf("MENU DE FUNCIONÁRIO\n");
-  //   printf("1 - Listar produtos\n");
-  //   printf("2 - Buscar produto\n");
-  //   printf("3 - Cadastrar novo produto\n");
-  //   printf("4 - Reposição de Estoque\n");
-  //   printf("0 - Voltar\n\n");
-  //   scanf("%d", &ch);
-  //
-  //   if(ch == 0) {
-  //     break;
-  //   }
-  //
-  //   if(ch == 1) {
-  //     printf("Listando os produtos...\n");
-  //     funcionario_list_products();
-  //     printf("dasd\n" );
-  //   }
-  //
-  //   if(ch == 3) {
-  //     funcionario_new_product();
-  //   }
-  //
-  // }
-
 
 }
 
@@ -126,27 +104,66 @@ void funcionario_new_product() {
 
 void funcionario_list_products() {
   system("clear");
+  printf("LISTAGEM DE PRODUTOS\n");
 
   Produto products[MAX_LIN];
   produto_getAllProducts(products);
   int i;
-  printf("------------------------------------------------------------------\n");
-  for(i=0; i<MAX_LIN; i++) {
+  for(i=0; i<MAX_LIN-3; i++) {
     if(products[i].id != 0) {
-      printf("Código:  %i  ", products[i].codigo);
-      printf("Descricao:  %s  \n", products[i].descricao);
-      printf("Preço:  R$ %.2f ", products[i].preco);
-      printf("Fornecedor:  %s  ", products[i].fornecedor);
-      printf("Quantidade:  %i  \n", products[i].quantidade);
-      printf("Data de Validade:  %i/%i/%i  ", products[i].validade.dia, products[i].validade.mes, products[i].validade.ano);
-      printf("Corredor:  %i  ", products[i].localizacao.corredor);
-      printf("Prateleira:  %i \n", products[i].localizacao.prateleira);
-      printf("------------------------------------------------------------------\n");
+      if(i==0) {
+        produto_printProduct(1, &products[i]);
+      } else {
+        produto_printProduct(0, &products[i]);
+      }
     }
   }
 
   printf("Voltar ao menu [PRESS 9]: "); //Err
   char go;
   scanf("%c\n", &go);
+}
 
+void funcionario_stock_replace() {
+  system("clear");
+  int id;
+  Produto p;
+  printf("REPOSIÇÃO DE ESTOQUE\n");
+  printf("ID do produto: ");
+  scanf("%i", &id);
+  produto_getProductById(id, &p);
+  printf("Temos %i produto(s) %s em estoque\n", p.quantidade, p.descricao);
+  printf("Insira o novo valor de quantidade: ");
+  scanf("%i", &p.quantidade);
+  produto_updateProduct(id, &p);
+}
+
+void funcionario_search_product() {
+  system("clear");
+  printf("BUSCAR PRODUTO\n");
+  printf("[1. Por ID]\n");
+  printf("[2. Por Nome]\n");
+  printf("[3. Por Fornecedor]\n");
+  printf("Critério de busca: ");
+  int ch;
+  scanf("%i", &ch);
+
+  Produto p;
+  switch (ch) {
+    case 1:
+      printf("ID: ");
+      scanf("%i", &p.id);
+      produto_searchProduct(1, &p);
+      break;
+    case 2:
+      printf("Nome: ");
+      scanf("%s", p.descricao);
+      produto_searchProduct(2, &p);
+      break;
+    case 3:
+      printf("Fornecedor: ");
+      scanf("%s", p.fornecedor);
+      produto_searchProduct(3, &p);
+      break;
+  }
 }

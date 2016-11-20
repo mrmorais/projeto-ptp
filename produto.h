@@ -25,6 +25,9 @@ typedef struct Produto {
 } Produto;
 
 int produto_newProduct(Produto *p);
-Produto getProduct(int id);
+void produto_getProductById(int id, Produto* p);
+void produto_updateProduct(int id, Produto *p);
+void produto_printProduct(int first, Produto *p);
+void produto_searchProduct(int search_type, Produto *p);
 
 #endif

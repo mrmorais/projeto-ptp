@@ -13,18 +13,40 @@
  * Issues: NO
  */
 
-void dao_readFile(char tupla[MAX_LIN][MAX_COL]) {
+void dao_readFile(char buffer[MAX_LIN][MAX_COL]) {
   /* Isto é mágica. Não toque aqui. */
   FILE *arquivo;
   arquivo = fopen(PRODUTO_TXT, "r");
   char ch;
   int lin = 0, col = 0;
   while((ch=fgetc(arquivo)) != EOF) {
-    tupla[lin][col++] = ch;
+    buffer[lin][col++] = ch;
     if(ch == '\n') {
       lin++;
       col=0;
     }
+  }
+  fclose(arquivo);
+}
+
+void dao_writeFile(Produto products[MAX_LIN]) {
+  FILE *arquivo;
+  arquivo = fopen(PRODUTO_TXT, "w");
+  int i;
+  for(i=0; i<MAX_LIN; i++) {
+    fprintf(arquivo, "%i:%i:%i:%.2f:%s:%s:%i:%i:%i:%i:%i:%i:\n",
+            products[i].id,
+            products[i].categoria,
+            products[i].codigo,
+            products[i].preco,
+            products[i].descricao,
+            products[i].fornecedor,
+            products[i].validade.dia,
+            products[i].validade.mes,
+            products[i].validade.ano,
+            products[i].localizacao.corredor,
+            products[i].localizacao.prateleira,
+            products[i].quantidade);
   }
   fclose(arquivo);
 }
@@ -133,4 +155,34 @@ int dao_getNextId() {
   fclose(arquivo);
 
   return next_id;
+}
+
+void dao_updateProduct(int id, Produto* p) {
+  Produto products[MAX_LIN];
+  produto_getAllProducts(products);
+
+  int i;
+  for(i=0; i<MAX_LIN; i++) {
+    if(products[i].id == id) {
+      products[i] = *p;
+      break;
+    }
+  }
+
+  dao_writeFile(products);
+}
+
+void dao_getProductById(int id, Produto *p) {
+  (*p).id = 0;
+  
+  Produto products[MAX_LIN];
+  produto_getAllProducts(products);
+
+  int i;
+  for(i=0; i<MAX_LIN; i++) {
+    if(products[i].id == id) {
+      *p = products[i];
+      break;
+    }
+  }
 }
