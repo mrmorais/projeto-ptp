@@ -23,7 +23,7 @@ void produto_getAllProducts(Produto products[MAX_LIN]) {
 	dao_setProdutos(buffer, products);
 	int i;
 	for (i=0; i<MAX_LIN; i++) {
-		if(products[i].id > dao_getNextId() || products[i].id < 0 || products[i].validade.mes > 12) {
+		if(products[i].id > dao_getNextId() || products[i].id < 0 || products[i].validade.mes > 12 || products[i].validade.mes < 1) {
 			products[i].id = 0;
 		}
 	}
