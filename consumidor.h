@@ -6,4 +6,6 @@
 void consumidor_menu();
 void consumidor_add_to_cart();
 void consumidor_list_cart();
+void consumidor_clear_cart();
+void consumidor_finish_shopping();
 #endif

@@ -20,6 +20,14 @@ void carrinho_addProduct(Carrinho *cart, Produto *p) {
   }
 }
 
+double carrinho_totalPrice(Carrinho *cart) {
+  double total_price = 0; int i;
+  for (i = 0; i < (*cart).next_index; i++) {
+    total_price += (*cart).products[i].preco * (*cart).products[i].quantidade;
+  }
+  return total_price;
+}
+
 void carrinho_listCart(Carrinho *cart) {
   int i, first=1;
   double total_price = 0;
@@ -27,5 +35,15 @@ void carrinho_listCart(Carrinho *cart) {
     produto_printProduct(first, &(*cart).products[i]);
     total_price += (*cart).products[i].preco * (*cart).products[i].quantidade;
   }
-  printf("TOTAL À PAGAR: R$ %.2f \n", total_price);
+  printf("TOTAL À PAGAR: R$ %.2f \n", carrinho_totalPrice(cart));
+}
+
+
+void carrinho_clearCart(Carrinho *cart) {
+  int i;
+  Produto empty;
+  for (i = 0; i<MAX_PRODUCTS; i++) {
+    (*cart).products[i] = empty;
+  }
+  (*cart).next_index = 0;
 }

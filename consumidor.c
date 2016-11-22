@@ -38,6 +38,12 @@ void consumidor_menu() {
       case 4:
         consumidor_list_cart();
         break;
+      case 5:
+        consumidor_clear_cart();
+        break;
+      case 6:
+        consumidor_finish_shopping();
+        break;
     }
   } while(ch);
 }
@@ -56,12 +62,35 @@ void consumidor_add_to_cart() {
   int wait;
   printf("Voltar ao menu [PRESS 9]: "); //Err
   scanf("%i", &wait);
+  getchar();
 }
 
 void consumidor_list_cart() {
   system("clear");
   printf("VER CARRINHO\n");
   carrinho_listCart(&cart);
+
+  int wait;
+  printf("Voltar ao menu [PRESS 9]: "); //Err
+  scanf("%i", &wait);
+  // getchar();
+}
+
+void consumidor_clear_cart() {
+  system("clear");
+  carrinho_clearCart(&cart);
+  printf("CARRINHO LIMPO\n");
+
+  int wait;
+  printf("Voltar ao menu [PRESS 9]: "); //Err
+  scanf("%i", &wait);
+}
+
+void consumidor_finish_shopping() {
+  system("clear");
+  printf("COMPRA FINALIZADA\n");
+  printf("TOTAL À PAGAR: R$ %.2f\n", carrinho_totalPrice(&cart));
+  carrinho_clearCart(&cart);
 
   int wait;
   printf("Voltar ao menu [PRESS 9]: "); //Err

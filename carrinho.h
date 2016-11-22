@@ -8,6 +8,8 @@ typedef struct Carrinho {
 } Carrinho;
 
 void carrinho_addProduct(Carrinho *cart, Produto *p);
+double carrinho_totalPrice(Carrinho *cart);
 void carrinho_listCart(Carrinho *cart);
+void carrinho_clearCart(Carrinho *cart);
 
 #endif
