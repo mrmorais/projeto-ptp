@@ -1,15 +1,15 @@
+/**
+ * @file produtoDAO.c
+ * @author Maradona Morais
+ * @date 26 Nov 2016
+ * @brief Manipulador de arquivos para persistência de Produto
+ */
+
 #include "produtoDAO.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-/*
- * Project: Bodega do IMD. Grupo 13
- * File: produtoDAO.c
- * Programmer: Maradona Morais (mrmorais@gthb)
- * Commit Log: ProdutoDAO function 14/11/2016
- * DOC Url: https://github.com/mrmorais/projeto-ptp/blob/master/docs/class/produtoDAO.md
- * Issues: NO
- */
+
 
 void dao_readFile(char buffer[MAX_LIN][MAX_COL]) {
   /* Isto é mágica. Não toque aqui. */

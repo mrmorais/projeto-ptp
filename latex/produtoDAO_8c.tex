@@ -1,0 +1,46 @@
+\hypertarget{produtoDAO_8c}{}\section{produto\+D\+A\+O.\+c File Reference}
+\label{produtoDAO_8c}\index{produto\+D\+A\+O.\+c@{produto\+D\+A\+O.\+c}}
+
+
+Manipulador de arquivos para persistência de \hyperlink{structProduto}{Produto}.  
+
+
+{\ttfamily \#include \char`\"{}produto\+D\+A\+O.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_a09489f258e4e7df20ff75ac07459ea9f}\label{produtoDAO_8c_a09489f258e4e7df20ff75ac07459ea9f}} 
+void {\bfseries dao\+\_\+read\+File} (char buffer\mbox{[}M\+A\+X\+\_\+\+L\+IN\mbox{]}\mbox{[}M\+A\+X\+\_\+\+C\+OL\mbox{]})
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_a4647b13002e4e49df5b235121cd758d1}\label{produtoDAO_8c_a4647b13002e4e49df5b235121cd758d1}} 
+void {\bfseries dao\+\_\+write\+File} (\hyperlink{structProduto}{Produto} products\mbox{[}M\+A\+X\+\_\+\+L\+IN\mbox{]})
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_a9481a9e700ccbec6d1501d887ff321e0}\label{produtoDAO_8c_a9481a9e700ccbec6d1501d887ff321e0}} 
+void {\bfseries dao\+\_\+set\+Produtos} (char tupla\mbox{[}M\+A\+X\+\_\+\+L\+IN\mbox{]}\mbox{[}M\+A\+X\+\_\+\+C\+OL\mbox{]}, \hyperlink{structProduto}{Produto} produto\mbox{[}M\+A\+X\+\_\+\+L\+IN\mbox{]})
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_ae61bcd9cb1cae43cac62467747de629d}\label{produtoDAO_8c_ae61bcd9cb1cae43cac62467747de629d}} 
+int {\bfseries dao\+\_\+put\+Produto} (\hyperlink{structProduto}{Produto} $\ast$p)
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_a908acc51a76e09f5233d84b2bfd4f7fb}\label{produtoDAO_8c_a908acc51a76e09f5233d84b2bfd4f7fb}} 
+int {\bfseries dao\+\_\+get\+Next\+Id} ()
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_a0785444ed4fba6de9d0669b01d8e301c}\label{produtoDAO_8c_a0785444ed4fba6de9d0669b01d8e301c}} 
+void {\bfseries dao\+\_\+update\+Product} (int id, \hyperlink{structProduto}{Produto} $\ast$p)
+\item 
+\mbox{\Hypertarget{produtoDAO_8c_ae1cd12f1e6b8bbb0ce3d184ebc392c21}\label{produtoDAO_8c_ae1cd12f1e6b8bbb0ce3d184ebc392c21}} 
+void {\bfseries dao\+\_\+get\+Product\+By\+Id} (int id, \hyperlink{structProduto}{Produto} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manipulador de arquivos para persistência de \hyperlink{structProduto}{Produto}. 
+
+\begin{DoxyAuthor}{Author}
+Maradona Morais 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26 Nov 2016 
+\end{DoxyDate}

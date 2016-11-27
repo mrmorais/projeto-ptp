@@ -1,0 +1,104 @@
+\hypertarget{produto_8c}{}\section{produto.\+c File Reference}
+\label{produto_8c}\index{produto.\+c@{produto.\+c}}
+
+
+Rotinas de interação com o \hyperlink{structProduto}{Produto}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}produto\+D\+A\+O.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}produto.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{produto_8c_af1d19b9dafa0ab98dbe0f70360ed2709}{produto\+\_\+new\+Product} (\hyperlink{structProduto}{Produto} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Redireciona produto para persistência. \end{DoxyCompactList}\item 
+void \hyperlink{produto_8c_af4e1484b63d126a90f5e76389e948c4f}{produto\+\_\+get\+All\+Products} (\hyperlink{structProduto}{Produto} products\mbox{[}M\+A\+X\+\_\+\+L\+IN\mbox{]})
+\begin{DoxyCompactList}\small\item\em Insere produtos da persistência de arquivos em um array de \hyperlink{structProduto}{Produto}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{produto_8c_a38c268d657542fd5de0687d0ff6fa9e1}\label{produto_8c_a38c268d657542fd5de0687d0ff6fa9e1}} 
+void \hyperlink{produto_8c_a38c268d657542fd5de0687d0ff6fa9e1}{produto\+\_\+get\+Product\+By\+Id} (int id, \hyperlink{structProduto}{Produto} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Pega um produto pelo o ID. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{produto_8c_a48455f4a0b83e44cbe9a21dad515fb0a}\label{produto_8c_a48455f4a0b83e44cbe9a21dad515fb0a}} 
+void \hyperlink{produto_8c_a48455f4a0b83e44cbe9a21dad515fb0a}{produto\+\_\+update\+Product} (int id, \hyperlink{structProduto}{Produto} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Atualiza informações de um produto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{produto_8c_a3bf1f738fbfabb62e089a6551acec1f2}\label{produto_8c_a3bf1f738fbfabb62e089a6551acec1f2}} 
+void \hyperlink{produto_8c_a3bf1f738fbfabb62e089a6551acec1f2}{produto\+\_\+print\+Product} (int first, \hyperlink{structProduto}{Produto} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Imprime, formatadamente, as informações de um produto. \end{DoxyCompactList}\item 
+void \hyperlink{produto_8c_a5f86029313b3648378dc4a97a6c3d826}{produto\+\_\+search\+Product} (int search\+\_\+type, \hyperlink{structProduto}{Produto} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Busca produtos por tipo de pesquisa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Rotinas de interação com o \hyperlink{structProduto}{Produto}. 
+
+\begin{DoxyAuthor}{Author}
+Maradona Morais 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26 Nov 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{produto_8c_af4e1484b63d126a90f5e76389e948c4f}\label{produto_8c_af4e1484b63d126a90f5e76389e948c4f}} 
+\index{produto.\+c@{produto.\+c}!produto\+\_\+get\+All\+Products@{produto\+\_\+get\+All\+Products}}
+\index{produto\+\_\+get\+All\+Products@{produto\+\_\+get\+All\+Products}!produto.\+c@{produto.\+c}}
+\subsubsection{\texorpdfstring{produto\+\_\+get\+All\+Products()}{produto\_getAllProducts()}}
+{\footnotesize\ttfamily void produto\+\_\+get\+All\+Products (\begin{DoxyParamCaption}\item[{\hyperlink{structProduto}{Produto}}]{products\mbox{[}\+M\+A\+X\+\_\+\+L\+I\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Insere produtos da persistência de arquivos em um array de \hyperlink{structProduto}{Produto}. 
+
+Insere no {\ttfamily products} todos os produtos que são lidos no gerenciador de persistência de produtos (produto\+D\+AO) \mbox{\Hypertarget{produto_8c_af1d19b9dafa0ab98dbe0f70360ed2709}\label{produto_8c_af1d19b9dafa0ab98dbe0f70360ed2709}} 
+\index{produto.\+c@{produto.\+c}!produto\+\_\+new\+Product@{produto\+\_\+new\+Product}}
+\index{produto\+\_\+new\+Product@{produto\+\_\+new\+Product}!produto.\+c@{produto.\+c}}
+\subsubsection{\texorpdfstring{produto\+\_\+new\+Product()}{produto\_newProduct()}}
+{\footnotesize\ttfamily int produto\+\_\+new\+Product (\begin{DoxyParamCaption}\item[{\hyperlink{structProduto}{Produto} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Redireciona produto para persistência. 
+
+A rotina redireciona a referência de \hyperlink{structProduto}{Produto} para a produto\+D\+AO 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$p} & Ponteiro de \hyperlink{structProduto}{Produto} para redirecionamento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o ID ({\ttfamily int}) do produto persistido 
+\end{DoxyReturn}
+\mbox{\Hypertarget{produto_8c_a5f86029313b3648378dc4a97a6c3d826}\label{produto_8c_a5f86029313b3648378dc4a97a6c3d826}} 
+\index{produto.\+c@{produto.\+c}!produto\+\_\+search\+Product@{produto\+\_\+search\+Product}}
+\index{produto\+\_\+search\+Product@{produto\+\_\+search\+Product}!produto.\+c@{produto.\+c}}
+\subsubsection{\texorpdfstring{produto\+\_\+search\+Product()}{produto\_searchProduct()}}
+{\footnotesize\ttfamily void produto\+\_\+search\+Product (\begin{DoxyParamCaption}\item[{int}]{search\+\_\+type,  }\item[{\hyperlink{structProduto}{Produto} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Busca produtos por tipo de pesquisa. 
+
+Faz uma leitura de produtos persistidos e seleciona os produtos com as especificações dadas. Os tipos de busca, definidos em {\ttfamily int} {\ttfamily search\+\_\+type}, são ~\newline
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Tipo}&\textbf{ Filtro em}&\textbf{ Valor }&\textbf{ Descrição }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Tipo}&\textbf{ Filtro em}&\textbf{ Valor }&\textbf{ Descrição }\\\cline{1-4}
+\endhead
+ID &p.\+id &1 &Buscar produto por ID \\\cline{1-4}
+Nome &p.\+descricao &2 &Buscar produto por Nome \\\cline{1-4}
+Fornecedor &p.\+fornecedor &3 &Produtos de um fornecedor \\\cline{1-4}
+\end{longtabu}
+O {\bfseries termo} de busca vem determinado no parâmetro {\ttfamily $\ast$p} 
+\begin{DoxyParams}{Parameters}
+{\em search\+\_\+type} & Critério de busca \\
+\hline
+{\em $\ast$p} & Referência ao \hyperlink{structProduto}{Produto} com o termo de busca determinado \\
+\hline
+\end{DoxyParams}

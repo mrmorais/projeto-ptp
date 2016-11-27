@@ -1,16 +1,19 @@
+/**
+ * @file consumidor.c
+ * @author Maradona Morais
+ * @date 27 Nov 2016
+ * @brief Menu para consumidor
+ */
+
 #include <stdio.h>
 #include "consumidor.h"
 #include "carrinho.h"
-/*
- * Project: Bodega do IMD. Grupo 13
- * File: consumidor.c
- * Programmer: Maradona Morais (mrmorais@gthb)
- * Commit Log: Consumidor function 13/11/2016
- * Issues: NO
+
+Carrinho cart; //!< variável de escopo global do consumidor
+
+/**
+ * @brief Menu principal do consumidor
  */
-
-Carrinho cart;
-
 void consumidor_menu() {
   int ch = 1;
   do {
@@ -48,6 +51,9 @@ void consumidor_menu() {
   } while(ch);
 }
 
+/**
+ * @brief Adiciona ao carrinho um produto pelo ID
+ */
 void consumidor_add_to_cart() {
   system("clear");
   Produto p;
@@ -59,40 +65,46 @@ void consumidor_add_to_cart() {
 
   carrinho_addProduct(&cart, &p);
 
-  int wait;
-  printf("Voltar ao menu [PRESS 9]: "); //Err
-  scanf("%i", &wait);
+  getchar();
   getchar();
 }
 
+/**
+ * @brief Lista todos os produtos da compra
+ */
 void consumidor_list_cart() {
   system("clear");
   printf("VER CARRINHO\n");
   carrinho_listCart(&cart);
 
-  int wait;
-  printf("Voltar ao menu [PRESS 9]: "); //Err
-  scanf("%i", &wait);
-  // getchar();
+  printf("[Enter] para voltar");
+  getchar();
+  getchar();
 }
 
+/**
+ * @brief Limpa todos os produtos do carrinho
+ */
 void consumidor_clear_cart() {
   system("clear");
   carrinho_clearCart(&cart);
   printf("CARRINHO LIMPO\n");
 
-  int wait;
-  printf("Voltar ao menu [PRESS 9]: "); //Err
-  scanf("%i", &wait);
+  printf("[Enter] para voltar");
+  getchar();
+  getchar();
 }
 
+/**
+ * @brief Finaliza uma compra
+ */
 void consumidor_finish_shopping() {
   system("clear");
   printf("COMPRA FINALIZADA\n");
   printf("TOTAL À PAGAR: R$ %.2f\n", carrinho_totalPrice(&cart));
   carrinho_clearCart(&cart);
 
-  int wait;
-  printf("Voltar ao menu [PRESS 9]: "); //Err
-  scanf("%i", &wait);
+  printf("[Enter] para voltar");
+  getchar();
+  getchar();
 }

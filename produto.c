@@ -1,42 +1,62 @@
+/**
+ * @file produto.c
+ * @author Maradona Morais
+ * @date 26 Nov 2016
+ * @brief Rotinas de interação com o Produto
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "produtoDAO.h"
 #include "produto.h"
 
-/*
- * Project: Bodega do IMD. Grupo 13
- * File: produto.c
- * Programmer: Maradona Morais (mrmorais@gthb)
- * Commit Log: Produto function 14/11/2016
- * DOC Url: https://github.com/mrmorais/projeto-ptp/blob/master/docs/class/produto.md
- * Issues: NO
+/**
+ * @brief Redireciona produto para persistência
+ *
+ * A rotina redireciona a referência de Produto para a produtoDAO
+ * @param *p Ponteiro de Produto para redirecionamento
+ * @return Retorna o ID (@c int) do produto persistido
  */
-
 int produto_newProduct(Produto *p) {
 	dao_putProduto(p);
 }
 
+/**
+ * @brief Insere produtos da persistência de arquivos em um array de Produto
+ *
+ * Insere no @p products todos os produtos que são lidos no gerenciador de persistência
+ * de produtos (produtoDAO)
+ */
 void produto_getAllProducts(Produto products[MAX_LIN]) {
 	char buffer[MAX_LIN][MAX_COL];
 	dao_readFile(buffer);
 	dao_setProdutos(buffer, products);
 	int i;
 	for (i=0; i<MAX_LIN; i++) {
-		if(products[i].id > dao_getNextId() || products[i].id < 0 || products[i].validade.mes > 12 || products[i].validade.mes < 0) {
+		if(products[i].id > dao_getNextId() || products[i].id < 0 || products[i].validade.mes > 12 || products[i].validade.mes < 0 || (int) products[i].preco <= 0) {
 			products[i].id = 0;
 		}
 	}
 }
 
+/**
+ * @brief Pega um produto pelo o ID
+ */
 void produto_getProductById(int id, Produto* p) {
 	dao_getProductById(id, p);
 }
 
+/**
+ * @brief Atualiza informações de um produto
+ */
 void produto_updateProduct(int id, Produto *p) {
 	dao_updateProduct(id, p);
 }
 
+/**
+ * @brief Imprime, formatadamente, as informações de um produto
+ */
 void produto_printProduct(int first, Produto *p) {
 	if(first) {
 		printf("------------------------------------------------------------------\n");
@@ -52,6 +72,21 @@ void produto_printProduct(int first, Produto *p) {
 	printf("------------------------------------------------------------------\n");
 }
 
+/**
+ * @brief Busca produtos por tipo de pesquisa
+ *
+ * Faz uma leitura de produtos persistidos e seleciona os produtos com as
+ * especificações dadas. Os tipos de busca, definidos em @c int @p search_type, são <br>
+ *<table>
+ * <tr><th>Tipo<th>Filtro em<th> Valor <th>Descrição
+ * <tr><td> ID <td> p.id <td> 1 <td> Buscar produto por ID
+ * <tr><td> Nome <td> p.descricao <td> 2 <td> Buscar produto por Nome
+ * <tr><td> Fornecedor <td> p.fornecedor <td> 3 <td> Produtos de um fornecedor
+ *</table>
+ * O @b termo de busca vem determinado no parâmetro @p *p
+ * @param search_type Critério de busca
+ * @param *p Referência ao Produto com o termo de busca determinado
+ */
 void produto_searchProduct(int search_type, Produto *p) {
 	Produto tmp_p;
 
@@ -68,8 +103,9 @@ void produto_searchProduct(int search_type, Produto *p) {
 			} else {
 				produto_printProduct(1, &tmp_p);
 			}
-			printf("Voltar ao menu [PRESS 9]: "); //Err
-			scanf("%i", &wait);
+			printf("[Enter] para voltar");
+			getchar();
+			getchar();
 			break;
 		case 2: //Nome
 			for(i = 0; i<MAX_LIN; i++) {
@@ -80,8 +116,9 @@ void produto_searchProduct(int search_type, Produto *p) {
 					}
 				}
 			}
-			printf("Voltar ao menu [PRESS 9]: "); //Err
-			scanf("%i", &wait);
+			printf("[Enter] para voltar");
+			getchar();
+			getchar();
 			break;
 		case 3: //Fornecedor
 			for(i = 0; i<MAX_LIN; i++) {

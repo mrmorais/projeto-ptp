@@ -1,2 +1,1 @@
-# projeto-ptp
-Projeto de Programação - UFRN
+# Projeto ITP - PTP 2016

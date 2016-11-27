@@ -1,13 +1,15 @@
-#include "funcionario.h"
-
-/*
- * Project: Bodega do IMD. Grupo 13
- * File: funcionario.c
- * Programmer: Maradona Morais (mrmorais@gthb)
- * Commit Log: Funcionario function 14/11/2016
- * Issues: #1 #2
+/**
+ * @file funcionario.c
+ * @author Maradona Morais
+ * @date 27 Nov 2016
+ * @brief Menu para funcionário
  */
 
+#include "funcionario.h"
+
+/**
+ * @brief Menu principal do funcionário
+ */
 void funcionario_menu() {
   int ch=1;
 
@@ -40,6 +42,9 @@ void funcionario_menu() {
 
 }
 
+/**
+ * @brief Menu para cadastro de novo produto
+ */
 void funcionario_new_product() {
   system("clear");
   Produto p;
@@ -48,7 +53,7 @@ void funcionario_new_product() {
   scanf("%i", &p.codigo);
   printf("Descricão: ");
   scanf("%s", p.descricao); //Issue #1
-  setbuf(stdin, NULL);
+  // setbuf(stdin, NULL);
   printf("Fornecedor: ");
   scanf("%s", p.fornecedor); //Issue #1
   setbuf(stdin, NULL);
@@ -98,6 +103,9 @@ void funcionario_new_product() {
   produto_newProduct(&p);
 }
 
+/**
+ * @brief Menu para reposição de estoque
+ */
 void funcionario_stock_replace() {
   system("clear");
   int id;
@@ -110,4 +118,9 @@ void funcionario_stock_replace() {
   printf("Insira o novo valor de quantidade: ");
   scanf("%i", &p.quantidade);
   produto_updateProduct(id, &p);
+  printf("FEITO\n");
+
+  printf("[Enter] para voltar");
+  getchar();
+  getchar();
 }

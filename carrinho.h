@@ -2,9 +2,10 @@
 #define _CARRINHO_H_
 #define MAX_PRODUCTS 100
 
+/** @brief Estrutura de compra */
 typedef struct Carrinho {
-  Produto products[MAX_PRODUCTS];
-  int next_index;
+  Produto products[MAX_PRODUCTS]; //!< Array de estruturas do tipo Produto
+  int next_index; //!< Valor correspondente ao próximo index do @p products
 } Carrinho;
 
 void carrinho_addProduct(Carrinho *cart, Produto *p);

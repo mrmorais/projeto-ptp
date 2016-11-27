@@ -1,8 +1,18 @@
+/**
+ * @file menus_comuns.c
+ * @author Maradona Morais
+ * @date 27 Nov 2016
+ * @brief Menus comuns a Funcionário e Consumidor
+ */
+
 #include <stdio.h>
 #include "produto.h"
 #include "produtoDAO.h"
 #include "menus_comuns.h"
 
+/**
+ * @brief Buscar produto
+ */
 void menu_search_products() {
   system("clear");
   printf("BUSCAR PRODUTO\n");
@@ -33,6 +43,9 @@ void menu_search_products() {
   }
 }
 
+/**
+ * @brief Listar todos os produtos cadastrados
+ */
 void menu_list_products() {
   system("clear");
   printf("LISTAGEM DE PRODUTOS\n");
@@ -50,7 +63,7 @@ void menu_list_products() {
     }
   }
 
-  printf("Voltar ao menu [PRESS 9]: "); //Err
-  char go;
-  scanf("%c\n", &go);
+  printf("[Enter] para voltar");
+  getchar();
+  getchar();
 }

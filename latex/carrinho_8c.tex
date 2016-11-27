@@ -1,0 +1,106 @@
+\hypertarget{carrinho_8c}{}\section{carrinho.\+c File Reference}
+\label{carrinho_8c}\index{carrinho.\+c@{carrinho.\+c}}
+
+
+Rotinas de interação com o \hyperlink{structCarrinho}{Carrinho}.  
+
+
+{\ttfamily \#include \char`\"{}produto.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}carrinho.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{carrinho_8c_adec2f493b4f848807a0021245ff3d280}{carrinho\+\_\+add\+Product} (\hyperlink{structCarrinho}{Carrinho} $\ast$\hyperlink{consumidor_8c_a5f0f5c839b2aecf4171cdda0daefb3a4}{cart}, \hyperlink{structProduto}{Produto} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Adiciona produto ao \hyperlink{structCarrinho}{Carrinho}. \end{DoxyCompactList}\item 
+double \hyperlink{carrinho_8c_aa5e9e488a399e11d56c9b62cfd16f913}{carrinho\+\_\+total\+Price} (\hyperlink{structCarrinho}{Carrinho} $\ast$\hyperlink{consumidor_8c_a5f0f5c839b2aecf4171cdda0daefb3a4}{cart})
+\begin{DoxyCompactList}\small\item\em Calcula o valor total da compra. \end{DoxyCompactList}\item 
+void \hyperlink{carrinho_8c_a59a059003259dd5bbbe5bc0953524f5b}{carrinho\+\_\+list\+Cart} (\hyperlink{structCarrinho}{Carrinho} $\ast$\hyperlink{consumidor_8c_a5f0f5c839b2aecf4171cdda0daefb3a4}{cart})
+\begin{DoxyCompactList}\small\item\em Imprime todos os produtos e o total à pagar. \end{DoxyCompactList}\item 
+void \hyperlink{carrinho_8c_a41aa3a4fa2697a1c38cb7d575d21cb1e}{carrinho\+\_\+clear\+Cart} (\hyperlink{structCarrinho}{Carrinho} $\ast$\hyperlink{consumidor_8c_a5f0f5c839b2aecf4171cdda0daefb3a4}{cart})
+\begin{DoxyCompactList}\small\item\em Limpa todos os produtos do carrinho. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Rotinas de interação com o \hyperlink{structCarrinho}{Carrinho}. 
+
+\begin{DoxyAuthor}{Author}
+Maradona Morais 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26 Nov 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{carrinho_8c_adec2f493b4f848807a0021245ff3d280}\label{carrinho_8c_adec2f493b4f848807a0021245ff3d280}} 
+\index{carrinho.\+c@{carrinho.\+c}!carrinho\+\_\+add\+Product@{carrinho\+\_\+add\+Product}}
+\index{carrinho\+\_\+add\+Product@{carrinho\+\_\+add\+Product}!carrinho.\+c@{carrinho.\+c}}
+\subsubsection{\texorpdfstring{carrinho\+\_\+add\+Product()}{carrinho\_addProduct()}}
+{\footnotesize\ttfamily void carrinho\+\_\+add\+Product (\begin{DoxyParamCaption}\item[{\hyperlink{structCarrinho}{Carrinho} $\ast$}]{cart,  }\item[{\hyperlink{structProduto}{Produto} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Adiciona produto ao \hyperlink{structCarrinho}{Carrinho}. 
+
+Esta função adiciona no \hyperlink{structCarrinho}{Carrinho} cart a referência para o \hyperlink{structProduto}{Produto} p. ~\newline
+ Este produto é inserido na posição {\ttfamily next\+\_\+index} (que é posteriormente incrementada em uma unidade) do {\ttfamily products}\mbox{[}\mbox{]} na Struct \hyperlink{structCarrinho}{Carrinho}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$cart} & Ponteiro para o carrinho de produtos, no qual o produto deve ser inserido. \\
+\hline
+{\em $\ast$p} & Ponteiro para o produto que deve ser anexado ao final do array de produtos do {\ttfamily $\ast$cart} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{carrinho_8c_a41aa3a4fa2697a1c38cb7d575d21cb1e}\label{carrinho_8c_a41aa3a4fa2697a1c38cb7d575d21cb1e}} 
+\index{carrinho.\+c@{carrinho.\+c}!carrinho\+\_\+clear\+Cart@{carrinho\+\_\+clear\+Cart}}
+\index{carrinho\+\_\+clear\+Cart@{carrinho\+\_\+clear\+Cart}!carrinho.\+c@{carrinho.\+c}}
+\subsubsection{\texorpdfstring{carrinho\+\_\+clear\+Cart()}{carrinho\_clearCart()}}
+{\footnotesize\ttfamily void carrinho\+\_\+clear\+Cart (\begin{DoxyParamCaption}\item[{\hyperlink{structCarrinho}{Carrinho} $\ast$}]{cart }\end{DoxyParamCaption})}
+
+
+
+Limpa todos os produtos do carrinho. 
+
+Rotina limpa todos os produtos já cadastrados e reseta o atributo {\ttfamily next\+\_\+index} do {\ttfamily cart}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$cart} & Referência ao carrinho que deve ter todos os produtos apagados. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{carrinho_8c_a59a059003259dd5bbbe5bc0953524f5b}\label{carrinho_8c_a59a059003259dd5bbbe5bc0953524f5b}} 
+\index{carrinho.\+c@{carrinho.\+c}!carrinho\+\_\+list\+Cart@{carrinho\+\_\+list\+Cart}}
+\index{carrinho\+\_\+list\+Cart@{carrinho\+\_\+list\+Cart}!carrinho.\+c@{carrinho.\+c}}
+\subsubsection{\texorpdfstring{carrinho\+\_\+list\+Cart()}{carrinho\_listCart()}}
+{\footnotesize\ttfamily void carrinho\+\_\+list\+Cart (\begin{DoxyParamCaption}\item[{\hyperlink{structCarrinho}{Carrinho} $\ast$}]{cart }\end{DoxyParamCaption})}
+
+
+
+Imprime todos os produtos e o total à pagar. 
+
+Esta rotina {\ttfamily void} imprime, na saída padrão, as informações de cada produto adicionado ao carrinho. E, por fim, imprime o preço total a ser pago, calculado por \hyperlink{carrinho_8c_aa5e9e488a399e11d56c9b62cfd16f913}{carrinho\+\_\+total\+Price(\+Carrinho $\ast$cart)}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$cart} & Referência do carrinho que deve ter os produtos impressos. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{carrinho_8c_aa5e9e488a399e11d56c9b62cfd16f913}\label{carrinho_8c_aa5e9e488a399e11d56c9b62cfd16f913}} 
+\index{carrinho.\+c@{carrinho.\+c}!carrinho\+\_\+total\+Price@{carrinho\+\_\+total\+Price}}
+\index{carrinho\+\_\+total\+Price@{carrinho\+\_\+total\+Price}!carrinho.\+c@{carrinho.\+c}}
+\subsubsection{\texorpdfstring{carrinho\+\_\+total\+Price()}{carrinho\_totalPrice()}}
+{\footnotesize\ttfamily double carrinho\+\_\+total\+Price (\begin{DoxyParamCaption}\item[{\hyperlink{structCarrinho}{Carrinho} $\ast$}]{cart }\end{DoxyParamCaption})}
+
+
+
+Calcula o valor total da compra. 
+
+Retorna a soma da quantidade de todos os produtos multiplicado por seus respectivos preços.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$cart} & Referência do carrinho que deve ter total de compra calculado. \\
+\hline
+\end{DoxyParams}
